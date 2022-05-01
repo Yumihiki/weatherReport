@@ -41,6 +41,7 @@ def main(is_local_debug=True):
         # todo: URLによって場所を変化させるように（奈良県固定値を直す）
         print(f"奈良県の天気をお知らせします")
         print(f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
+        return f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except Exception as e:
         print(f'Error! except is {e}')
     print('---finish---')
