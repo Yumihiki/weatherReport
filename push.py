@@ -8,7 +8,7 @@ import env
 line_bot_api = LineBotApi(env.CHANNEL_ACCESS_TOKEN)
 
 
-def send():
+def push():
     try:
         line_bot_api.push_message(
             env.SEND_USER_ID,
@@ -19,4 +19,4 @@ def send():
 
 
 if __name__ == '__main__':
-    send()
+    push()
