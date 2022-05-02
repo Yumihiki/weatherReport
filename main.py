@@ -14,9 +14,9 @@ CITY_NAME = '奈良'
 # APIでは0番目に当日データが割り振られるため0を当日とする
 TODAY = 0
 
-# API送信時のオリジナルヘッダ
+# API送信時のオリジナルヘッダ APIの提供者の方が何のアプリから叩かれているかわかるために定義
 HEADERS = {
-    'User-Agent': 'weatherReport/0.0.1'
+    'User-Agent': 'weatherReport/1.0'
 }
 
 
