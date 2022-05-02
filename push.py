@@ -12,7 +12,7 @@ def push():
     try:
         line_bot_api.push_message(
             env.SEND_USER_ID,
-            TextSendMessage(text=main.main())
+            TextSendMessage(text=main.main(False))
         )
     except LineBotApiError as e:
         pass
