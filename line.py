@@ -25,7 +25,7 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    """ APIのトリガーとなるURLを叩く"""
+    """ webhockURLが叩かれた際に実行される"""
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
@@ -53,5 +53,6 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
+    # herokuのデプロイのためポート番号を指定
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
