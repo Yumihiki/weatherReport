@@ -1,8 +1,7 @@
 # coding: utf-8
 """ 天気情報を取得する"""
-import requests
-
 import json
+import requests
 
 # todo: 定数値の別モジュール化
 # APIの実行URL, 奈良県 奈良の固定値
@@ -26,7 +25,6 @@ def main(is_local_debug=True):
     """
     # 提供APIを必要以上に呼ばないため、API実行時と同等の結果を持つファイルを利用する
     print('---start---')
-
     try:
         if is_local_debug:
             with open('sample.json', 'r') as sample_json:
@@ -34,16 +32,16 @@ def main(is_local_debug=True):
                 print('debug mode')
         else:
             weather_data = requests.get(URL, headers=HEADERS).json()
-    except Exception as e:
-        print(f'Error! except is {e}')
+    except Exception as error:
+        print(f'Error! except is {error}')
 
     try:
         # todo: URLによって場所を変化させるように（奈良県固定値を直す）
-        print(f"奈良県の天気をお知らせします")
+        print("奈良県の天気をお知らせします")
         print(f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
         return f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
-    except Exception as e:
-        print(f'Error! except is {e}')
+    except Exception as error:
+        print(f'Error! except is {error}')
     print('---finish---')
 
 
