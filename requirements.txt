@@ -1,2 +1,4 @@
 Flask==2.1.2
-line-bot-sdk==1.8.0
+line-bot-sdk==2.2.1
+requests==2.27.1
+pylint==2.13.7

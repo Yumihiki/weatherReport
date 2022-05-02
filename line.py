@@ -1,3 +1,5 @@
+# coding: utf-8
+"""LineBotの応答メッセージ"""
 from flask import Flask, request, abort
 
 from linebot import (
@@ -23,6 +25,7 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route("/callback", methods=['POST'])
 def callback():
+    """ webhockURLが叩かれた際に実行される"""
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
@@ -42,6 +45,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    """ LINEBotの応答メッセージを返却する"""
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=main.main())
@@ -49,5 +53,6 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
+    # herokuのデプロイのためポート番号を指定
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
