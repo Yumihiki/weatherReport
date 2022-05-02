@@ -7,13 +7,13 @@ from linebot.exceptions import LineBotApiError
 import main
 import env
 
-line_bot_api = LineBotApi(env.CHANNEL_ACCESS_TOKEN)
+LINE_BOT_API = LineBotApi(env.CHANNEL_ACCESS_TOKEN)
 
 
 def push():
     """ プッシュ通知をする"""
     try:
-        line_bot_api.push_message(
+        LINE_BOT_API.push_message(
             env.SEND_USER_ID,
             TextSendMessage(text=main.main())
         )

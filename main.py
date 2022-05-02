@@ -23,9 +23,9 @@ def main(is_local_debug=True):
     :param is_local_debug: 開発環境でデバッグ目的の場合: True
     :return: 天気の情報
     """
-    # 提供APIを必要以上に呼ばないため、API実行時と同等の結果を持つファイルを利用する
     print('---start---')
     try:
+        # 提供APIへの負荷軽減のためAPI実行時と同等の結果を持つファイルを利用する
         if is_local_debug:
             with open('sample.json', 'r') as sample_json:
                 weather_data = json.load(sample_json)
