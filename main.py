@@ -41,11 +41,11 @@ def main(is_local_debug=True):
     try:
         print(f"{CITY_NAME}の天気をお知らせします "
               f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
+        print('---finish---')
         return f"{CITY_NAME}の天気をお知らせします " \
                f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except Exception as error:
         print(f'Error! except is {error}')
-    print('---finish---')
 
 
 if __name__ == '__main__':
