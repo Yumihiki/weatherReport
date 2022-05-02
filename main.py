@@ -3,10 +3,13 @@
 import json
 import requests
 
-# todo: 定数値の別モジュール化
-# APIの実行URL, 奈良県 奈良の固定値
-# todo: URLの末尾を可変な仕組みにする
-URL = 'https://weather.tsukumijima.net/api/forecast/city/290010'
+# APIの実行URL
+BASE_URL = 'https://weather.tsukumijima.net/api/forecast/city/'
+# 以下の情報はhttps://weather.tsukumijima.net/primary_area.xml から取得
+# 奈良県 奈良の固定値（天気情報の町）
+CITY_ID = '290010'
+URL = BASE_URL + CITY_ID
+CITY_NAME = '奈良'
 
 # APIでは0番目に当日データが割り振られるため0を当日とする
 TODAY = 0
@@ -36,10 +39,10 @@ def main(is_local_debug=True):
         print(f'Error! except is {error}')
 
     try:
-        # todo: URLによって場所を変化させるように（奈良県固定値を直す）
-        print("奈良県の天気をお知らせします")
-        print(f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
-        return f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
+        print(f"{CITY_NAME}の天気をお知らせします "
+              f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
+        return f"{CITY_NAME}の天気をお知らせします " \
+               f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except Exception as error:
         print(f'Error! except is {error}')
     print('---finish---')
