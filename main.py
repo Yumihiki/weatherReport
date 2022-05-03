@@ -1,6 +1,7 @@
 # coding: utf-8
 """ 天気情報を取得する"""
 import json
+
 import requests
 
 # APIの実行URL

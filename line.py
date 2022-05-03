@@ -1,7 +1,8 @@
 # coding: utf-8
 """LineBotの応答メッセージ"""
-from flask import Flask, request, abort
+import os
 
+from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -11,7 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-import os
+
 import main
 
 app = Flask(__name__)
