@@ -31,22 +31,19 @@ def main(is_local_debug=True):
     try:
         # 提供APIへの負荷軽減のためAPI実行時と同等の結果を持つファイルを利用する
         if is_local_debug:
-            with open('sample.json', 'r') as sample_json:
+            with open('sample.json', 'r', encoding="utf-8") as sample_json:
                 weather_data = json.load(sample_json)
                 print('debug mode')
         else:
             weather_data = requests.get(URL, headers=HEADERS).json()
-    except Exception as error:
-        print(f'Error! except is {error}')
-
-    try:
         print(f"{CITY_NAME}の天気をお知らせします "
               f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
         print('---finish---')
         return f"{CITY_NAME}の天気をお知らせします " \
                f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
-    except Exception as error:
-        print(f'Error! except is {error}')
+    except KeyError:
+        print('KeyErrorが発生しました。APIのデータ構造を確認してください。')
+        return "天気情報の取得に失敗しました。"
 
 
 if __name__ == '__main__':
