@@ -36,8 +36,9 @@ def main(is_local_debug=True):
                 print('debug mode')
         else:
             weather_data = requests.get(URL, headers=HEADERS).json()
-        print(f"{CITY_NAME}の天気をお知らせします "
-              f"今日は {weather_data['forecasts'][TODAY]['telop']} です")
+        print(f"{weather_data['forecasts'][TODAY]['date']}の"
+              f"{CITY_NAME}の天気をお知らせします "
+              f"{weather_data['forecasts'][TODAY]['telop']} です")
         print('---finish---')
         return f"{CITY_NAME}の天気をお知らせします " \
                f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
