@@ -40,7 +40,8 @@ def main(is_local_debug=True):
               f"{CITY_NAME}の天気をお知らせします "
               f"{weather_data['forecasts'][TODAY]['telop']} です")
         print('---finish---')
-        return f"{CITY_NAME}の天気をお知らせします " \
+        return f"{weather_data['forecasts'][TODAY]['date']}の" \
+               f"{CITY_NAME}の天気をお知らせします " \
                f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except KeyError:
         print('KeyErrorが発生しました。APIのデータ構造を確認してください。')
