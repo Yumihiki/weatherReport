@@ -57,5 +57,6 @@ def getWeatherData(is_local_debug=True):
     else:
         return requests.get(URL, headers=HEADERS).json()
 
+
 if __name__ == '__main__':
     main(is_local_debug=True)
