@@ -29,13 +29,7 @@ def main(is_local_debug=True):
     """
     print('---start---')
     try:
-        # 提供APIへの負荷軽減のためAPI実行時と同等の結果を持つファイルを利用する
-        if is_local_debug:
-            with open('sample.json', 'r', encoding="utf-8") as sample_json:
-                weather_data = json.load(sample_json)
-                print('debug mode')
-        else:
-            weather_data = requests.get(URL, headers=HEADERS).json()
+        weather_data = getWeatherData(is_local_debug)
         print(f"{weather_data['forecasts'][TODAY]['date']}の"
               f"{CITY_NAME}の天気をお知らせします "
               f"{weather_data['forecasts'][TODAY]['telop']} です")
@@ -47,6 +41,21 @@ def main(is_local_debug=True):
         print('KeyErrorが発生しました。APIのデータ構造を確認してください。')
         return "天気情報の取得に失敗しました。"
 
+
+def getWeatherData(is_local_debug=True):
+    """ 天気情報を取得する
+
+    APIまたはファイルから天気情報を取得する
+    APIへの負荷軽減のため、開発時には同等の結果を出力するサンプルファイルを用いる
+
+    :param is_local_debug: 開発環境でデバッグ目的の場合: True
+    :return: 天気の情報
+    """
+    if is_local_debug:
+        with open('sample.json', 'r', encoding="utf-8") as sample_json:
+            return json.load(sample_json)
+    else:
+        return requests.get(URL, headers=HEADERS).json()
 
 if __name__ == '__main__':
     main(is_local_debug=True)
