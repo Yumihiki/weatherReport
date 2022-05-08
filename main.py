@@ -17,7 +17,7 @@ TODAY = 0
 
 # API送信時のオリジナルヘッダ APIの提供者の方が何のアプリから叩かれているかわかるために定義
 HEADERS = {
-    'User-Agent': 'weatherReport/1.0'
+    'User-Agent': 'weather_report/2.0'
 }
 
 
