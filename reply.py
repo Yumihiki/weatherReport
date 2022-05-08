@@ -24,7 +24,7 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 
-@app.route("/callback", methods=['POST'])
+@app.route('/callback', methods=['POST'])
 def callback():
     """ webhockURLが叩かれた際に実行される"""
     # get X-Line-Signature header value
@@ -32,14 +32,14 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    app.logger.info('Request body: ' + body)
 
     # handle webhook body
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
-        print("Invalid signature. "
-              "Please check your channel access token/channel secret.")
+        print('Invalid signature. '
+              'Please check your channel access token/channel secret.')
         abort(400)
     return 'OK'
 
@@ -53,7 +53,7 @@ def handle_message(event):
     )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # herokuのデプロイのためポート番号を指定
-    port = int(os.getenv("PORT", '5000'))
-    app.run(host="0.0.0.0", port=port)
+    port = int(os.getenv('PORT', '5000'))
+    app.run(host='0.0.0.0', port=port)

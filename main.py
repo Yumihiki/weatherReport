@@ -31,15 +31,15 @@ def main(is_local_debug=True):
     try:
         weather_data = getWeatherData(is_local_debug)
         print(f"{weather_data['forecasts'][TODAY]['date']}の"
-              f"{CITY_NAME}の天気をお知らせします "
+              f'{CITY_NAME}の天気をお知らせします '
               f"{weather_data['forecasts'][TODAY]['telop']} です")
         print('---finish---')
         return f"{weather_data['forecasts'][TODAY]['date']}の" \
-               f"{CITY_NAME}の天気をお知らせします " \
+               f'{CITY_NAME}の天気をお知らせします ' \
                f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except KeyError:
         print('KeyErrorが発生しました。APIのデータ構造を確認してください。')
-        return "天気情報の取得に失敗しました。"
+        return '天気情報の取得に失敗しました。'
 
 
 def getWeatherData(is_local_debug=True):
@@ -52,7 +52,7 @@ def getWeatherData(is_local_debug=True):
     :return: 天気の情報
     """
     if is_local_debug:
-        with open('sample.json', 'r', encoding="utf-8") as sample_json:
+        with open('sample.json', 'r', encoding='utf-8') as sample_json:
             return json.load(sample_json)
     else:
         return requests.get(URL, headers=HEADERS).json()
