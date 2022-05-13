@@ -15,7 +15,7 @@ def push():
     try:
         LINE_BOT_API.push_message(
             env.SEND_USER_ID,
-            TextSendMessage(text=main.main(False))
+            TextSendMessage(text=main.main(is_local_debug=False))
         )
     except LineBotApiError as error:
         LINE_BOT_API.push_message(
