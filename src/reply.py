@@ -26,7 +26,7 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route('/callback', methods=['POST'])
 def callback():
-    """ webhockURLが叩かれた際に実行される"""
+    """ webhookURLが叩かれた際に実行される"""
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
