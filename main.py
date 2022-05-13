@@ -29,7 +29,7 @@ def main(is_local_debug=True):
     """
     print('---start---')
     try:
-        weather_data = getWeatherData(is_local_debug)
+        weather_data = get_weather_data(is_local_debug)
         print(f"{weather_data['forecasts'][TODAY]['date']}の"
               f'{CITY_NAME}の天気をお知らせします '
               f"{weather_data['forecasts'][TODAY]['telop']} です")
@@ -42,7 +42,7 @@ def main(is_local_debug=True):
         return '天気情報の取得に失敗しました。'
 
 
-def getWeatherData(is_local_debug=True):
+def get_weather_data(is_local_debug=True):
     """ 天気情報を取得する
 
     APIまたはファイルから天気情報を取得する
