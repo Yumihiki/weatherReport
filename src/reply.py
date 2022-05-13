@@ -13,7 +13,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-import main
+from main import main
 
 app = Flask(__name__)
 
@@ -49,7 +49,7 @@ def handle_message(event):
     """ LINEBotの応答メッセージを返却する"""
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=main.main(is_local_debug=False))
+        TextSendMessage(text=main(is_local_debug=False))
     )
 
 
