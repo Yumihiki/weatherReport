@@ -4,7 +4,7 @@ from linebot import LineBotApi
 from linebot.exceptions import LineBotApiError
 from linebot.models import TextSendMessage
 
-from src import env
+import env
 import main
 
 LINE_BOT_API = LineBotApi(env.CHANNEL_ACCESS_TOKEN)
