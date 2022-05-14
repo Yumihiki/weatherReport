@@ -27,18 +27,12 @@ def main(is_local_debug=True):
     :param is_local_debug: 開発環境でデバッグ目的の場合: True
     :return: 天気の情報
     """
-    print('---start---')
     try:
         weather_data = get_weather_data(is_local_debug)
-        print(f"{weather_data['forecasts'][TODAY]['date']}の"
-              f'{CITY_NAME}の天気をお知らせします '
-              f"{weather_data['forecasts'][TODAY]['telop']} です")
-        print('---finish---')
         return f"{weather_data['forecasts'][TODAY]['date']}の" \
                f'{CITY_NAME}の天気をお知らせします ' \
                f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except KeyError:
-        print('KeyErrorが発生しました。APIのデータ構造を確認してください。')
         return '天気情報の取得に失敗しました。'
 
 
@@ -58,4 +52,4 @@ def get_weather_data(is_local_debug=True):
 
 
 if __name__ == '__main__':
-    main(is_local_debug=True)
+    print(main(is_local_debug=True))
