@@ -7,18 +7,18 @@ from linebot.models import TextSendMessage
 from env import CHANNEL_ACCESS_TOKEN, SEND_USER_ID
 from main import weather_report
 
-LINE_BOT_API = LineBotApi(CHANNEL_ACCESS_TOKEN)
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
 
 def push():
     """ プッシュ通知をする"""
     try:
-        LINE_BOT_API.push_message(
+        line_bot_api.push_message(
             SEND_USER_ID,
             TextSendMessage(text=weather_report(is_local_debug=False))
         )
     except LineBotApiError as error:
-        LINE_BOT_API.push_message(
+        line_bot_api.push_message(
             SEND_USER_ID,
             TextSendMessage(text='エラーが発生しました。作成者に問い合わせてください。')
         )
