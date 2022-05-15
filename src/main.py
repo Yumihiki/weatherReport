@@ -21,7 +21,7 @@ HEADERS = {
 }
 
 
-def main(is_local_debug=True):
+def weather_report(is_local_debug=True):
     """ メインロジック
 
     :param is_local_debug: 開発環境でデバッグ目的の場合: True
@@ -52,4 +52,4 @@ def get_weather_data(is_local_debug=True):
 
 
 if __name__ == '__main__':
-    print(main(is_local_debug=True))
+    print(weather_report(is_local_debug=True))

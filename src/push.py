@@ -5,7 +5,7 @@ from linebot.exceptions import LineBotApiError
 from linebot.models import TextSendMessage
 
 from env import CHANNEL_ACCESS_TOKEN, SEND_USER_ID
-from main import main
+from main import weather_report
 
 LINE_BOT_API = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
@@ -15,7 +15,7 @@ def push():
     try:
         LINE_BOT_API.push_message(
             SEND_USER_ID,
-            TextSendMessage(text=main(is_local_debug=False))
+            TextSendMessage(text=weather_report(is_local_debug=False))
         )
     except LineBotApiError as error:
         LINE_BOT_API.push_message(
