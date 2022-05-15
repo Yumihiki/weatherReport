@@ -22,7 +22,7 @@ HEADERS = {
 
 
 def weather_report(is_local_debug=True):
-    """ メインロジック
+    """ 天気情報を返す
 
     :param is_local_debug: 開発環境でデバッグ目的の場合: True
     :return: 天気の情報
