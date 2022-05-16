@@ -13,7 +13,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-from main import weather_report
+from weather_report import weather_report
 
 app = Flask(__name__)
 

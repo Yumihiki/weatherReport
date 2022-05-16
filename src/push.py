@@ -5,7 +5,7 @@ from linebot.exceptions import LineBotApiError
 from linebot.models import TextSendMessage
 
 from env import CHANNEL_ACCESS_TOKEN, SEND_USER_ID
-from main import weather_report
+from weather_report import weather_report
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
