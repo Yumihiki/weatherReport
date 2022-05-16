@@ -10,9 +10,7 @@ GitHubActionsを利用してherokuへ自動デプロイするようにしてい�
 以下の設定を各自で編集・設定することで利用可能になります。
 1. env.py の作成及び設定の登録
    1. CHANNEL_ACCESS_TOKEN: LINEのチャンネルアクセストークン 
-   2. CHANNEL_SECRET: LINEチャンネルシークレット（秘密鍵）
-   3. SEND_USER_ID: 送信先LINEユーザーID
-   4. SEND_GROUP_ID: 送信先LINEグループID
+   2. SEND_USER_ID: 送信先LINEユーザーID
 2. GitHub(Actions)
    1. HEROKU_API_KEY: herokuのAPI実行キー
    2. HEROKU_EMAIL: herokuのログインメールアドレス
