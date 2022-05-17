@@ -22,6 +22,20 @@ HEADERS = {
 
 
 def weather_report(is_local_debug=True):
+    """ 町の天気のメッセージを返す
+
+    :param is_local_debug: 開発環境でデバッグ目的の場合: True
+    :return: 町の天気のメッセージ
+    """
+    try:
+        weather_data = get_weather_data(is_local_debug)
+        return f"{weather_data['forecasts'][TODAY]['date']}の" \
+               f'{CITY_NAME}の天気をお知らせします '
+    except KeyError:
+        return '町の天気のメッセージ取得に失敗しました。'
+
+
+def weather_report_telop(is_local_debug=True):
     """ 天気情報を返す
 
     :param is_local_debug: 開発環境でデバッグ目的の場合: True
@@ -29,9 +43,7 @@ def weather_report(is_local_debug=True):
     """
     try:
         weather_data = get_weather_data(is_local_debug)
-        return f"{weather_data['forecasts'][TODAY]['date']}の" \
-               f'{CITY_NAME}の天気をお知らせします ' \
-               f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
+        return f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except KeyError:
         return '天気情報の取得に失敗しました。'
 
@@ -53,3 +65,4 @@ def get_weather_data(is_local_debug=True):
 
 if __name__ == '__main__':
     print(weather_report(is_local_debug=True))
+    print(weather_report_telop(is_local_debug=True))
