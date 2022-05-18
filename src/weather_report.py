@@ -30,7 +30,7 @@ def weather_report(is_local_debug=True):
     try:
         weather_data = get_weather_data(is_local_debug)
         return f"{weather_data['forecasts'][TODAY]['date']}の" \
-               f'{CITY_NAME}の天気をお知らせします '
+               f'{CITY_NAME}の天気をお知らせします'
     except KeyError:
         return '町の天気のメッセージ取得に失敗しました。'
 
