@@ -16,7 +16,9 @@ def push():
         line_bot_api.push_message(
             SEND_USER_ID,
             [TextSendMessage(text=weather_report(is_local_debug=False)),
-             TextSendMessage(text=weather_report_telop(is_local_debug=False))]
+             TextSendMessage(text=weather_report_telop(is_local_debug=False)),
+             TextSendMessage(text='https://www.jma.go.jp/bosai/forecast/'
+                                  '#area_type=offices&area_code=290000')]
         )
     except LineBotApiError as error:
         line_bot_api.push_message(
