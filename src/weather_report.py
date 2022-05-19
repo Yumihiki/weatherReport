@@ -48,6 +48,19 @@ def weather_report_telop(is_local_debug=True):
         return '天気情報の取得に失敗しました。'
 
 
+def weather_link(is_local_debug=True):
+    """ 天気のURLを返す
+
+    :param is_local_debug: 開発環境でデバッグ目的の場合: True
+    :return: 天気のURL
+    """
+    try:
+        weather_data = get_weather_data(is_local_debug)
+        return weather_data['link']
+    except KeyError:
+        return '天気情報の取得に失敗しました。'
+
+
 def get_weather_data(is_local_debug=True):
     """ 天気情報を取得する
 
@@ -66,3 +79,4 @@ def get_weather_data(is_local_debug=True):
 if __name__ == '__main__':
     print(weather_report(is_local_debug=True))
     print(weather_report_telop(is_local_debug=True))
+    print(weather_link(is_local_debug=True))

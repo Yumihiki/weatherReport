@@ -5,7 +5,7 @@ from linebot.exceptions import LineBotApiError
 from linebot.models import TextSendMessage
 
 from env import CHANNEL_ACCESS_TOKEN, SEND_USER_ID
-from weather_report import weather_report, weather_report_telop
+from weather_report import weather_report, weather_report_telop, weather_link
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
@@ -17,8 +17,7 @@ def push():
             SEND_USER_ID,
             [TextSendMessage(text=weather_report(is_local_debug=False)),
              TextSendMessage(text=weather_report_telop(is_local_debug=False)),
-             TextSendMessage(text='https://www.jma.go.jp/bosai/forecast/'
-                                  '#area_type=offices&area_code=290000')]
+             TextSendMessage(text=weather_link(is_local_debug=False))]
         )
     except LineBotApiError as error:
         line_bot_api.push_message(
