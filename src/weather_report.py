@@ -70,10 +70,13 @@ def get_weather_data(is_local_debug=True):
     :param is_local_debug: 開発環境でデバッグ目的の場合: True
     :return: 天気の情報
     """
-    if is_local_debug:
-        with open('src/sample.json', 'r', encoding='utf-8') as sample_json:
-            return json.load(sample_json)
-    return requests.get(URL, headers=HEADERS).json()
+    try:
+        if is_local_debug:
+            with open('src/sample.json', 'r', encoding='utf-8') as sample_json:
+                return json.load(sample_json)
+        return requests.get(URL, headers=HEADERS).json()
+    except FileNotFoundError:
+        print('FileNotFoundError, jsonファイルがあるか確認してください。')
 
 
 if __name__ == '__main__':
