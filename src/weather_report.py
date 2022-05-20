@@ -45,7 +45,7 @@ def weather_report_telop(is_local_debug=True):
         weather_data = get_weather_data(is_local_debug)
         return f"今日は {weather_data['forecasts'][TODAY]['telop']} です"
     except KeyError:
-        return '天気情報の取得に失敗しました。'
+        return '天気情報の取得に失敗しました（テロップ）。'
 
 
 def weather_link(is_local_debug=True):
@@ -58,7 +58,7 @@ def weather_link(is_local_debug=True):
         weather_data = get_weather_data(is_local_debug)
         return weather_data['link']
     except KeyError:
-        return '天気情報の取得に失敗しました。'
+        return '天気情報の取得に失敗しました。（URL）'
 
 
 def get_weather_data(is_local_debug=True):
