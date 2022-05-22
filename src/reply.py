@@ -13,7 +13,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-from weather_report import weather_report, weather_report_telop
+from weather_report import weather_report, weather_report_telop, weather_link
 
 app = Flask(__name__)
 
@@ -50,7 +50,8 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         [TextSendMessage(text=weather_report(is_local_debug=False)),
-         TextSendMessage(text=weather_report_telop(is_local_debug=False))]
+         TextSendMessage(text=weather_report_telop(is_local_debug=False)),
+         TextSendMessage(text=weather_link(is_local_debug=False))]
     )
 
 
