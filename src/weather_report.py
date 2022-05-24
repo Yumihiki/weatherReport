@@ -22,6 +22,7 @@ HEADERS = {
 
 
 class WeatherReport:
+    """天気情報操作クラス"""
     def __init__(self, is_local_debug):
         """__init__メソッド
 
