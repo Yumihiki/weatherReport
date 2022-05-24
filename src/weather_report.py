@@ -21,6 +21,15 @@ HEADERS = {
 }
 
 
+class WeatherReport:
+    def __init__(self, is_local_debug):
+        """__init__メソッド
+
+        :param is_local_debug: 開発環境でデバッグ目的の場合: True
+        """
+        self.is_local_debug = is_local_debug
+
+
 def weather_report(is_local_debug=True):
     """ 町の天気のメッセージを返す
 
