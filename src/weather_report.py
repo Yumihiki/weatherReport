@@ -36,10 +36,10 @@ class WeatherReport:
         :return 天気情報
         """
         try:
-            if self.is_local_debug:
-                with open('src/sample.json', 'r', encoding='utf-8') as sample_json:
-                    return json.load(sample_json)
-            return requests.get(URL, headers=HEADERS).json()
+            if not self.is_local_debug:
+                return requests.get(URL, headers=HEADERS).json()
+            with open('src/sample.json', 'r', encoding='utf-8') as sample_json:
+                return json.load(sample_json)
         except FileNotFoundError:
             print('FileNotFoundError, jsonファイルがあるか確認してください。')
 
