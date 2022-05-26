@@ -23,12 +23,25 @@ HEADERS = {
 
 class WeatherReport:
     """天気情報操作クラス"""
-    def __init__(self, is_local_debug):
+    def __init__(self, is_local_debug=True):
         """__init__メソッド
 
         :param is_local_debug: 開発環境でデバッグ目的の場合: True
         """
         self.is_local_debug = is_local_debug
+
+    def get_weather_data(self):
+        """天気情報を取得する
+
+        :return 天気情報
+        """
+        try:
+            if self.is_local_debug:
+                with open('src/sample.json', 'r', encoding='utf-8') as sample_json:
+                    return json.load(sample_json)
+            return requests.get(URL, headers=HEADERS).json()
+        except FileNotFoundError:
+            print('FileNotFoundError, jsonファイルがあるか確認してください。')
 
 
 def weather_report(is_local_debug=True):
@@ -93,3 +106,5 @@ if __name__ == '__main__':
     print(weather_report(is_local_debug=True))
     print(weather_report_telop(is_local_debug=True))
     print(weather_link(is_local_debug=True))
+    weather_report = WeatherReport(is_local_debug=True)
+    print(weather_report.get_weather_data())
