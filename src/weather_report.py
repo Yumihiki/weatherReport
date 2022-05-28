@@ -23,14 +23,14 @@ HEADERS = {
 
 class WeatherReport:
     """天気情報操作クラス"""
-    def __init__(self, is_local_debug=True):
+    def __init__(self, is_local_debug: bool = True) -> None:
         """__init__メソッド
 
         :param is_local_debug: 開発環境でデバッグ目的の場合: True
         """
         self.is_local_debug = is_local_debug
 
-    def get_weather_data(self):
+    def get_weather_data(self) -> dict:
         """天気情報を取得する
 
         :return 天気情報
