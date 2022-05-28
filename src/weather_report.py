@@ -31,7 +31,7 @@ class WeatherReport:
         self.is_local_debug = is_local_debug
         self.weather_data = {}
 
-    def set_weather_data(self) -> dict:
+    def set_weather_data(self):
         """天気情報を取得する
 
         :return 天気情報
