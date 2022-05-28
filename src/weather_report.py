@@ -29,17 +29,18 @@ class WeatherReport:
         :param is_local_debug: 開発環境でデバッグ目的の場合: True
         """
         self.is_local_debug = is_local_debug
+        self.weather_data = {}
 
-    def get_weather_data(self) -> dict:
+    def set_weather_data(self) -> dict:
         """天気情報を取得する
 
         :return 天気情報
         """
         try:
             if not self.is_local_debug:
-                return requests.get(URL, headers=HEADERS).json()
+                self.weather_data = requests.get(URL, headers=HEADERS).json()
             with open('src/sample.json', 'r', encoding='utf-8') as sample_json:
-                return json.load(sample_json)
+                self.weather_data = json.load(sample_json)
         except FileNotFoundError:
             print('FileNotFoundError, jsonファイルがあるか確認してください。')
 
@@ -107,4 +108,5 @@ if __name__ == '__main__':
     print(weather_report_telop(is_local_debug=True))
     print(weather_link(is_local_debug=True))
     weather_report = WeatherReport(is_local_debug=True)
-    print(weather_report.get_weather_data())
+    weather_report.set_weather_data()
+    print(weather_report.weather_data)
