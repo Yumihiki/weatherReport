@@ -44,6 +44,14 @@ class WeatherReport:
         except FileNotFoundError:
             print('FileNotFoundError, jsonファイルがあるか確認してください。')
 
+    def forecasts(self):
+        """天気予報を返却する
+
+        :return 天気予報
+        """
+        return f"{self.weather_data['forecasts'][TODAY]['date']}の" \
+               f'{CITY_NAME}の天気をお知らせします'
+
 
 def weather_report(is_local_debug=True):
     """ 町の天気のメッセージを返す
@@ -109,4 +117,4 @@ if __name__ == '__main__':
     print(weather_link(is_local_debug=True))
     weather_report = WeatherReport(is_local_debug=True)
     weather_report.set_weather_data()
-    print(weather_report.weather_data)
+    print(weather_report.forecasts())
